@@ -29,11 +29,11 @@ function calculateWeekAndTrimester() {
 
 // Displaying the data in the widget
 function updateWidget() {
-    const postTransferDays = calculatePostTransferDays();
+    const postTransferDays = calculatePostTransferDays() + embryoAgeAtTransfer - 1; // Subtract 1 to account for the transfer day being Day 0;
     const { week, trimester } = calculateWeekAndTrimester();
     
     document.getElementById('date').innerText = `Today's Date: ${new Date().toLocaleDateString()}`;
-    document.getElementById('postTransferDay').innerText = `Post Transfer: ${postTransferDays} days (10dp5dt equivalent)`;
+    document.getElementById('postTransferDay').innerText = `Post Transfer: ${postTransferDays} dp5dt`;
     document.getElementById('week').innerText = `Current Week: ${week}`;
     document.getElementById('trimester').innerText = `Trimester: ${trimester}`;
 }
