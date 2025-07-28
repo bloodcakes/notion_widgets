@@ -1,5 +1,6 @@
 // IVF transfer date (change this to the actual transfer date)
 const transferDate = new Date('2025-07-16'); // YYYY-MM-DD format
+const embryoAgeAtTransfer = 5; // Age of the embryo in days (5-day embryo)
 
 // Function to calculate days post-transfer
 function calculatePostTransferDays() {
@@ -10,10 +11,8 @@ function calculatePostTransferDays() {
 
 // Function to calculate the week and trimester
 function calculateWeekAndTrimester() {
-    const postTransferDays = calculatePostTransferDays();
-    
-    // Week is calculated based on 7-day increments
-    const week = Math.floor(postTransferDays / 7) + 1;
+    const postTransferDays = calculatePostTransferDays() + embryoAgeAtTransfer; // Adding embryo age
+    const week = Math.floor(postTransferDays / 7) + 1;  // Add 1 to make the first week "Week 1"
     
     // Trimester logic: First trimester is 0-12 weeks, second is 13-26 weeks, third is 27 weeks and onward
     let trimester = '';
